@@ -1,0 +1,16 @@
+This script provides linting information for Java code according to Google's format style.
+
+Usage:
+    lint <optional arguments> [Java file]
+
+Arguments:
+    -h
+      Show this help panel.
+
+Credits:
+    Version: 0.1.0
+    Created by: Simon Kwilinski
+    Release date: 2022-12-30
+
+Info:
+    Located at /bin/lint.

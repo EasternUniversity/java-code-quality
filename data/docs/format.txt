@@ -1,0 +1,22 @@
+This script formats Java code according to Google's format style.
+
+Usage:
+    format <optional arguments> [Java file]
+
+Arguments:
+    -h
+      Show this help panel.
+
+    -r
+      Recursively format all Java files in a directory.
+
+    -s
+      Silent mode: don't list the names of formatted/skipped files.
+
+Credits:
+    Version: 0.2.0
+    Created by: Simon Kwilinski
+    Release date: 2022-12-30
+
+Info:
+    Located at /bin/format.

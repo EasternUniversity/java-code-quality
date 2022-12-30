@@ -25,6 +25,6 @@ chmod a+x /bin/format
 chmod a+x /bin/lint
 
 mkdir /opt/java-code-quality/
-cp data/* /opt/java-code-quality/
+cp -r data/* /opt/java-code-quality/
 
 echo "Successfully installed java-code-quality"

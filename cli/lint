@@ -1,5 +1,28 @@
 #!/bin/bash
 
-# Lint java code
+# Linting script, designed to provide linting information for Java files according to Google's format style.
+# https://github.com/EasternUniversity/java-code-quality
+
+# Initialize variables
+data_dir=/opt/java-code-quality/
+
+# Process any command line options
+# Code stolen from https://linuxconfig.org/bash-script-flags-usage-with-arguments-examples
+while getopts 'hrs?' OPTION; do
+	case "$OPTION" in
+		h)
+			cat $data_dir/docs/lint.txt
+			exit 0
+			;;
+
+		?)
+			echo "Usage: format <optional arguments> [Java file]"
+			exit 1
+			;;
+	esac
+done
+# Shift argument indices to account for any options (e.g. with a flag present, $2 becomes $1)
+shift "$(($OPTIND -1))"
+
 
 echo "linting..."

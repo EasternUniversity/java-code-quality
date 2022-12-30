@@ -7,11 +7,13 @@ This library manages the formatter and linter CLI for Java on numbers. It allows
 1. [Introduction](#introduction)
 2. [Formatting](#formatting)
 3. [Linting](#linting)
-4. [Updating](#updating)
+4. [Installation](#installation)
+5. [Updating](#updating)
    1. [google-java-format](#google-java-format)
    2. [checkstyle](#checkstyle)
    3. [checkstyle Google configuration](#checkstyle-google-configuration)
-5. [Credits](#credits)
+6. [Release New Version](#release-new-version)
+7. [Credits](#credits)
 
 ## Introduction
 
@@ -37,11 +39,15 @@ Linting of Java files is done through [checkstyle](https://checkstyle.org/). Fro
 
 Checkstyle [supports](https://checkstyle.org/google_style.html) Google's style guide through the use of a custom [configuration file](https://github.com/checkstyle/checkstyle/blob/master/src/main/resources/google_checks.xml).
 
-Similar to Google's formatter, checkstyle is packaged in a `jar` file that can be manually executed on student's code. Again, to avoid having students memorize a series of flags to run checkstyle, it is packaged in te custom `lint` command added to numbers. Students can thus lint their code with the following command:
+Similar to Google's formatter, checkstyle is packaged in a `jar` file that can be manually executed on student's code. Again, to avoid having students memorize a series of flags to run checkstyle, it is packaged in the custom `lint` command added to numbers. Students can thus lint their code with the following command:
 
 ```
 lint [file]
 ```
+
+## Installation
+
+Instructions pending...
 
 ## Updating
 
@@ -55,13 +61,13 @@ To update these files, simply download them from the links below and overwrite t
 
 ### google-java-format
 
-Download from the GitHub [releases page](https://github.com/google/google-java-format/releases/tag/v1.15.0). Make sure to get the "all-deps" version.
+Download from the GitHub repo [releases page](https://github.com/google/google-java-format/releases/tag/v1.15.0). Make sure to get the "all-deps" version.
 
 Remove the version number from the file name to allow the `format` command to identify it. Name it `google-java-format-all-deps.jar`.
 
 ### checkstyle
 
-Download from the GitHub [releases page](https://github.com/checkstyle/checkstyle/releases).
+Download from the GitHub repo [releases page](https://github.com/checkstyle/checkstyle/releases).
 
 Remove the version number from the file name to allow the `lint` command to identify it. Name it `checkstyle.jar`.
 
@@ -70,6 +76,24 @@ Remove the version number from the file name to allow the `lint` command to iden
 Download [google_checks.xml](https://github.com/checkstyle/checkstyle/blob/master/src/main/resources/google_checks.xml) in the checkstyle repository. Also see [this page](https://checkstyle.org/google_style.html).
 
 Use the default name `google_checks.xml`.
+
+## Release New Version
+
+After updating one or more of the above dependencies (or anything else in this library), update the [version number](data/version) according to standard numbering practices. Commit all changes to GitHub.
+
+Next, run the [`package.sh`](package.sh) script to create a zip package with the following commands:
+
+```shell
+cd java-code-quality/
+```
+
+**Note: You must run the script from within its parent directory.**
+
+```shell
+bash package.sh
+```
+
+Upload the created zip file to GitHub as a new release. Then, [install](#installation) the new package on numbers.
 
 ## Credits
 
