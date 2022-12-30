@@ -7,6 +7,9 @@ Arguments:
     -h
       Show this help panel.
 
+    -v
+      Display version information.
+
     -r
       Recursively format all Java files in a directory.
 
@@ -14,9 +17,8 @@ Arguments:
       Silent mode: don't list the names of formatted/skipped files.
 
 Credits:
-    Version: 0.2.0
     Created by: Simon Kwilinski
-    Release date: 2022-12-30
+    Version information: Use -v
 
 Info:
     Located at /bin/format.
