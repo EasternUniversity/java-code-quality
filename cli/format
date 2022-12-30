@@ -1,0 +1,108 @@
+#!/bin/bash
+
+# Format script, designed to automatically format Java files according to Google's format style.
+# Created by: Simon Kwilinski
+# Last modified: 2022-12-24
+# Find additional data related to this script in /opt/format/
+
+# Initialize variables
+recursive=0
+silent=0
+
+# Process any command line options
+# Code stolen from https://linuxconfig.org/bash-script-flags-usage-with-arguments-examples
+while getopts 'hrs?' OPTION; do
+	case "$OPTION" in
+		h)
+			echo -e "This script formats Java code according to Google's format style.\n"
+			echo -e "Usage:\n\tformat <optional arguments> [Java file]\n"
+			echo -e "Arguments:\n\t-h\n\tShow this help panel."
+			echo -e "\n\t-r\n\tRecursively format all Java files in a directory."
+			echo -e "\n\t-s\n\tSilent mode: don't list the names of formatted/skipped files."
+			echo -e "\nCredits:\n\tVersion: 0.1.0"
+			echo -e "\tCreated by: Simon Kwilinski"
+			echo -e "\tRelease date: 2022-12-24"
+			echo -e "\nInfo:\n\tLocated at /bin/format."
+			exit 0
+			;;
+		r)
+			recursive=1
+			;;
+		s)
+			silent=1
+			;;
+		?)
+			echo "Usage: format <optional arguments> [Java file]"
+			exit 1
+			;;
+	esac
+done
+# Shift argument indices to account for any options (e.g. if -f is used, $2 becomes $1)
+shift "$(($OPTIND -1))"
+
+
+# --------------------------------------------------
+# --------------------------------------------------
+
+# Print something only if silent mode is disabled
+print() {
+	if [[ $silent == 0 ]]
+	then
+		echo -e $1
+	fi
+}
+
+# This function calls Google's java format jar on a given file.
+# It is given as a function here to support recursive calls on every file in a directory.
+format_code() {
+	if [[ $1 == *.java ]]
+	then
+	        # Format the user's code in place
+        	java --add-exports jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED \
+                	--add-exports jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED \
+	                --add-exports jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED \
+        	        --add-exports jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED \
+                	--add-exports jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED \
+	                -jar /opt/format/google-java-format-all-deps.jar \
+        	        --replace \
+                	--aosp \
+	                $1
+		print "Formatted '$1'."
+	else
+		print "Skipping '$1' (non-Java file)."
+	fi
+}
+
+
+# --------------------------------------------------
+# --------------------------------------------------
+
+
+# Ensure the file/directory exists
+if [[ ! -e $1 ]]
+then
+	echo "There is no file or directory $1."
+	exit 1
+fi
+
+if [[ -d $1 ]]
+then
+	# If a directory was used, make sure the -r flag is enabled and then format recursively.
+	if [[ $recursive == 0 ]]
+	then
+		echo "'$1' is a directory, not a Java file. To recursively format Java files in a directory, use the -r flag."
+		exit 1
+	else
+		c=0
+		for file in $(find "$1" -type f)
+		do
+			format_code $file
+			((c++))
+		done
+		print "\nSuccessfully called formatter on $c file(s) in '$1'."
+		exit 0
+	fi
+else
+	# Otherwise, format the single file
+	format_code $1
+fi
