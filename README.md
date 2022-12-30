@@ -77,6 +77,19 @@ Download [google_checks.xml](https://github.com/checkstyle/checkstyle/blob/maste
 
 Use the default name `google_checks.xml`.
 
+This file also requires making a slight modification. Since the default indentation used by the formater is changed to four-space, rather than two-space, the xml file must reflect this change. Locate the `Indentation` module and double the indentation number of each property as follows:
+
+```xml
+<module name="Indentation">
+  <property name="basicOffset" value="4"/>
+  <property name="braceAdjustment" value="4"/>
+  <property name="caseIndent" value="4"/>
+  <property name="throwsIndent" value="8"/>
+  <property name="lineWrappingIndentation" value="8"/>
+  <property name="arrayInitIndent" value="4"/>
+</module>
+```
+
 ## Release New Version
 
 After updating one or more of the above dependencies (or anything else in this library), update the [version number](data/version) according to [semantic versioning[(https://semver.org/)], where dependency updates are considered minor changes. Commit all changes to GitHub.
