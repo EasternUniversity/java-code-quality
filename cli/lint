@@ -5,10 +5,11 @@
 
 # Initialize variables
 data_dir=/opt/java-code-quality/
+ignore_non_java=0
 
 # Process any command line options
 # Code stolen from https://linuxconfig.org/bash-script-flags-usage-with-arguments-examples
-while getopts 'hv?' OPTION; do
+while getopts 'hvf?' OPTION; do
 	case "$OPTION" in
 		h)
 			cat $data_dir/docs/lint.txt
@@ -18,6 +19,9 @@ while getopts 'hv?' OPTION; do
             echo -e "Current version of java-code-quality: $(cat $data_dir/version)"
             echo "See the GitHub page for more information: https://github.com/EasternUniversity/java-code-quality"
             exit 0
+            ;;
+        f)
+            ignore_non_java=1
             ;;
 		?)
 			echo "Usage: format <optional arguments> [Java file]"
@@ -29,4 +33,13 @@ done
 shift "$(($OPTIND -1))"
 
 
-echo "linting..."
+# Ignore files without the .java extension, unless the -f flag is present
+if [[ $1 != *.java && $ignore_non_java == 0 ]];
+then
+    echo "Omitting $1 as it is not a .java file. To force linting non-Java files, use the -f flag."
+    exit 1
+fi
+
+java -jar $data_dir/checkstyle.jar \
+    -c $data_dir/google_checks.xml \
+    $1

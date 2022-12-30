@@ -7,6 +7,9 @@ Arguments:
     -h
       Show this help panel.
 
+    -f
+      Force linting files without a .java extension.
+
     -v
       Display version information.
 
