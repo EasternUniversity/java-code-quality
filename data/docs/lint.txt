@@ -10,6 +10,9 @@ Arguments:
     -f
       Force linting files without a .java extension.
 
+    -r
+      Recursively lint all Java files in a directory.
+
     -v
       Display version information.
 

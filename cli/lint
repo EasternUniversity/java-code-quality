@@ -6,10 +6,11 @@
 # Initialize variables
 data_dir=/opt/java-code-quality/
 ignore_non_java=0
+recursive=0
 
 # Process any command line options
 # Code stolen from https://linuxconfig.org/bash-script-flags-usage-with-arguments-examples
-while getopts 'hvf?' OPTION; do
+while getopts 'hvfr?' OPTION; do
 	case "$OPTION" in
 		h)
 			cat $data_dir/docs/lint.txt
@@ -23,6 +24,9 @@ while getopts 'hvf?' OPTION; do
         f)
             ignore_non_java=1
             ;;
+        r)
+            recursive=1
+            ;;
 		?)
 			echo "Usage: format <optional arguments> [Java file]"
 			exit 1
@@ -32,6 +36,20 @@ done
 # Shift argument indices to account for any options (e.g. with a flag present, $2 becomes $1)
 shift "$(($OPTIND -1))"
 
+
+# If a directory was given and -r is not present, through an error
+if [[ -d $1 && recursive == 0 ]];
+then
+    echo "'$1' is a directory. To recursively lint all files in a directory, use the -r flag."
+    exit 1
+fi
+
+# If the file doesn't exist, exit
+if [[ ! -f $1 ]];
+then
+    echo "There is no file '$1'."
+    exit 1
+fi
 
 # Ignore files without the .java extension, unless the -f flag is present
 if [[ $1 != *.java && $ignore_non_java == 0 ]];
