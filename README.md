@@ -47,7 +47,7 @@ lint [file]
 
 ## Installation
 
-Installing the latest version of `java-code-quality` simply requires downloading the latest release and running the `install.sh` file. Any previous versions are automatically removed by the installer.
+Installing the latest version of `java-code-quality` simply requires downloading the latest release and running the `install.sh` file with `bash`. Any previous versions are automatically removed by the installer.
 
 1. Download the latest `zip` file from the [releases](https://github.com/EasternUniversity/java-code-quality/releases) page.
 
@@ -65,11 +65,10 @@ unzip java-code-quality-x.y.z.zip
 cd java-code-quality
 ```
 
-5. Make the `install.sh` file executable, and then run it:
+5. Make the `install.sh` file executable, and then run it as the superuser:
 
 ```sh
-chmod a+x install.sh
-./install.sh
+sudo bash install.sh
 ```
 
 6. You may now safely delete the `java-code-quality` directory and the `zip` file. The latest version has been installed.

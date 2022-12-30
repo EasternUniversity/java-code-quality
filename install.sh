@@ -9,8 +9,7 @@
 # repository, extract the zip and execute this script
 # as the superuser with the following commands:
 
-# chmod a+x install.sh
-# ./install.sh
+# sudo bash install.sh
 
 # ==============================
 
