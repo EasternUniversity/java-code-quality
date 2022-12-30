@@ -21,7 +21,7 @@ The purpose of this library is to help students understand the importance of cod
 
 ## Formatting
 
-Eastern University defaults to Google's style guide for Java with the exception of using four-space indentation.
+Eastern University defaults to Google's [style guide](https://google.github.io/styleguide/javaguide.html) for Java with the exception of using four-space indentation.
 
 Google provides a [Java program](https://github.com/google/google-java-format) that automatically formats a given Java file to their standards. (When run with the `--aosp` flag, it uses four-space indentation).
 
