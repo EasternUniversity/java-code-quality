@@ -45,9 +45,9 @@ then
 fi
 
 # If the file doesn't exist, exit
-if [[ ! -f $1 ]];
+if [[ ! -e $1 ]];
 then
-    echo "There is no file '$1'."
+    echo "'$1' does not exist."
     exit 1
 fi
 
