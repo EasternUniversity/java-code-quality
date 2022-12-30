@@ -92,7 +92,7 @@ This file also requires making a slight modification. Since the default indentat
 
 ## Release New Version
 
-After updating one or more of the above dependencies (or anything else in this library), update the [version number](data/version) according to [semantic versioning[(https://semver.org/)], where dependency updates are considered minor changes. Commit all changes to GitHub.
+After updating one or more of the above dependencies (or anything else in this library), update the [version number](data/version) according to [semantic versioning](https://semver.org/), where dependency updates are considered minor changes. Commit all changes to GitHub.
 
 Next, run the [`package.sh`](package.sh) script to create a zip package with the following commands:
 
