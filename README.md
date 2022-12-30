@@ -98,13 +98,10 @@ Next, run the [`package.sh`](package.sh) script to create a zip package with the
 
 ```shell
 cd java-code-quality/
+bash package.sh
 ```
 
 **Note: You must run the script from within its parent directory.**
-
-```shell
-bash package.sh
-```
 
 Upload the created zip file to GitHub as a new release. Then, [install](#installation) the new package on numbers.
 
