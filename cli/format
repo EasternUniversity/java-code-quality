@@ -1,11 +1,10 @@
 #!/bin/bash
 
 # Format script, designed to automatically format Java files according to Google's format style.
-# Created by: Simon Kwilinski
-# Last modified: 2022-12-24
-# Find additional data related to this script in /opt/format/
+# https://github.com/EasternUniversity/java-code-quality
 
 # Initialize variables
+data_dir=/opt/java-code-quality/
 recursive=0
 silent=0
 
@@ -14,15 +13,7 @@ silent=0
 while getopts 'hrs?' OPTION; do
 	case "$OPTION" in
 		h)
-			echo -e "This script formats Java code according to Google's format style.\n"
-			echo -e "Usage:\n\tformat <optional arguments> [Java file]\n"
-			echo -e "Arguments:\n\t-h\n\tShow this help panel."
-			echo -e "\n\t-r\n\tRecursively format all Java files in a directory."
-			echo -e "\n\t-s\n\tSilent mode: don't list the names of formatted/skipped files."
-			echo -e "\nCredits:\n\tVersion: 0.1.0"
-			echo -e "\tCreated by: Simon Kwilinski"
-			echo -e "\tRelease date: 2022-12-24"
-			echo -e "\nInfo:\n\tLocated at /bin/format."
+			cat $data_dir/docs/format.txt
 			exit 0
 			;;
 		r)
@@ -37,7 +28,7 @@ while getopts 'hrs?' OPTION; do
 			;;
 	esac
 done
-# Shift argument indices to account for any options (e.g. if -f is used, $2 becomes $1)
+# Shift argument indices to account for any options (e.g. with a flag present, $2 becomes $1)
 shift "$(($OPTIND -1))"
 
 
@@ -63,7 +54,7 @@ format_code() {
 	                --add-exports jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED \
         	        --add-exports jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED \
                 	--add-exports jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED \
-	                -jar /opt/format/google-java-format-all-deps.jar \
+	                -jar /opt/java-code-quality/google-java-format-all-deps.jar \
         	        --replace \
                 	--aosp \
 	                $1
