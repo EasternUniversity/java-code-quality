@@ -14,10 +14,18 @@
 
 # ==============================
 
+remove_if_exists() {
+    if [[ -e $1 ]];
+    then
+        rm -rf $1
+    fi
+}
+
 echo "Uninstalling old version..."
-rm /bin/format
-rm /bin/lint
-rm -r /opt/java-code-quality
+
+remove_if_exists /bin/format
+remove_if_exists /bin/lint
+remove_if_exists /opt/java-code-quality
 
 echo "Installing..."
 cp cli/* /bin/
