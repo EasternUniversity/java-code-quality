@@ -8,13 +8,17 @@ data_dir=/opt/java-code-quality/
 
 # Process any command line options
 # Code stolen from https://linuxconfig.org/bash-script-flags-usage-with-arguments-examples
-while getopts 'hrs?' OPTION; do
+while getopts 'hv?' OPTION; do
 	case "$OPTION" in
 		h)
 			cat $data_dir/docs/lint.txt
 			exit 0
 			;;
-
+        v)
+            echo -e "Current version of java-code-quality: $(cat $data_dir/version)"
+            echo "See the GitHub page for more information: https://github.com/EasternUniversity/java-code-quality"
+            exit 0
+            ;;
 		?)
 			echo "Usage: format <optional arguments> [Java file]"
 			exit 1

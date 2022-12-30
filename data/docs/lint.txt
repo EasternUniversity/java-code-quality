@@ -7,10 +7,12 @@ Arguments:
     -h
       Show this help panel.
 
+    -v
+      Display version information.
+
 Credits:
-    Version: 0.1.0
     Created by: Simon Kwilinski
-    Release date: 2022-12-30
+    Version information: Use -v
 
 Info:
     Located at /bin/lint.

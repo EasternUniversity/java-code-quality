@@ -10,12 +10,17 @@ silent=0
 
 # Process any command line options
 # Code stolen from https://linuxconfig.org/bash-script-flags-usage-with-arguments-examples
-while getopts 'hrs?' OPTION; do
+while getopts 'hvrs?' OPTION; do
 	case "$OPTION" in
 		h)
 			cat $data_dir/docs/format.txt
 			exit 0
 			;;
+        v)
+            echo -e "Current version of java-code-quality: $(cat $data_dir/version)"
+            echo "See the GitHub page for more information: https://github.com/EasternUniversity/java-code-quality"
+            exit 0
+            ;;
 		r)
 			recursive=1
 			;;
