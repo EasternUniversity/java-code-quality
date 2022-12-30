@@ -37,13 +37,6 @@ done
 shift "$(($OPTIND -1))"
 
 
-# If a directory was given and -r is not present, through an error
-if [[ -d $1 && recursive == 0 ]];
-then
-    echo "'$1' is a directory. To recursively lint all files in a directory, use the -r flag."
-    exit 1
-fi
-
 # If the file doesn't exist, exit
 if [[ ! -e $1 ]];
 then
@@ -51,11 +44,20 @@ then
     exit 1
 fi
 
-# Ignore files without the .java extension, unless the -f flag is present
-if [[ $1 != *.java && $ignore_non_java == 0 ]];
+# If it's a directory, make sure -r is present. If it's a file, make sure it's .java
+if [[ -d $1 ]];
 then
-    echo "Omitting $1 as it is not a .java file. To force linting non-Java files, use the -f flag."
-    exit 1
+    if [[ $recursive == 0 ]];
+    then
+        echo "'$1' is a directory. To recursively lint all files in a directory, use the -r flag."
+        exit 1
+    fi
+else
+    if [[ $1 != *.java && $ignore_non_java == 0 ]];
+    then
+        echo "Omitting $1 as it is not a .java file. To force linting non-Java files, use the -f flag."
+        exit 1
+    fi
 fi
 
 java -jar $data_dir/checkstyle.jar \
