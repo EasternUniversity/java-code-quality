@@ -1,4 +1,4 @@
-This script provides linting information for Java code according to Google's format style.
+Display linting information for Java code according to Google's format style.
 
 Usage:
     lint <optional arguments> [Java file]

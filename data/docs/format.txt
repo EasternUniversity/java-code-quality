@@ -1,4 +1,4 @@
-This script formats Java code according to Google's format style.
+Formats Java code according to Google's format style.
 
 Usage:
     format <optional arguments> [Java file]
