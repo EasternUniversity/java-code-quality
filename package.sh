@@ -8,6 +8,20 @@
 version=$(cat data/version)
 path=$(readlink -f ../java-code-quality-$version.zip)
 
-zip -rq $path data/* cli/* install.sh
+echo "Preparing zip file..."
+
+if [[ -e $path ]];
+then
+    rm -rf $path
+fi
+
+mkdir java-code-quality/
+cp -r data/ java-code-quality/
+cp -r cli/ java-code-quality/
+cp install.sh java-code-quality/
+
+zip -rq $path java-code-quality/
+
+rm -r java-code-quality/
 
 echo -e "Packaged to $path"
