@@ -36,8 +36,8 @@ mkdir $dir
 cp -r data/* $dir
 cp format-checker.py $dir
 
-echo "Installing python-Levenshtein..."
+echo "Installing python Levenshtein..."
 
-pip3 install python3-Levenshtein
+pip3 install levenshtein
 
 echo "Successfully installed java-code-quality"
