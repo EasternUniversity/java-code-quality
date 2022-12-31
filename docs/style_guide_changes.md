@@ -150,7 +150,7 @@ else {
 
 In each of these situations, omitting brackets is not required. But if it is possible to omit brackets according to these requirements, then doing so is encouraged.
 
-The `xml` was changed to enable the `allowSingleLineStatement` property and set the severity level to `warning`. The affected tokens were also expanded to include every available token.
+The `xml` was changed to enable the `allowSingleLineStatement` property and set the severity level to `warning`. The affected tokens were also expanded to include every available token. Additionally, the message was updated to be more user-friendly to students.
 
 ```xml
 <module name="NeedBraces">
@@ -158,7 +158,9 @@ The `xml` was changed to enable the `allowSingleLineStatement` property and set 
     value="LITERAL_DO, LITERAL_ELSE, LITERAL_FOR, LITERAL_IF, LITERAL_WHILE,
          LITERAL_CASE, LITERAL_DEFAULT, LAMBDA"/>
   <property name="allowSingleLineStatement" value="true"/>
-  <property name="severity" value="warning"/>
+  <property name="severity" value="error"/>
+  <message key="needBraces"
+    value="''{0}'' statement must either use ''{}''s or only span one line." />
 </module>
 ```
 
