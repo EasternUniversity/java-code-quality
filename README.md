@@ -10,9 +10,9 @@ This library manages the formatter and linter CLI for Java on numbers. It allows
 4. [Installation](#installation)
 5. [Updating](#updating)
    1. [google-java-format](#google-java-format)
-   2. [checkstyle](#checkstyle)
-   3. [checkstyle Google configuration](#checkstyle-google-configuration)
-6. [Release New Version](#release-new-version)
+   2. [Checkstyle](#checkstyle)
+   3. [Checkstyle Google configuration](#checkstyle-google-configuration)
+6. [Release New Version](#releasing-new-versions)
 7. [Credits](#credits)
 
 ## Introduction
@@ -33,13 +33,13 @@ format [file]
 
 ## Linting
 
-Linting of Java files is done through [checkstyle](https://checkstyle.org/). From their website:
+Linting of Java files is done through [Checkstyle](https://checkstyle.org/). From their website:
 
 > Checkstyle is a development tool to help programmers write Java code that adheres to a coding standard. It automates the process of checking Java code to spare humans of this boring (but important) task. This makes it ideal for projects that want to enforce a coding standard.
 
 Checkstyle [supports](https://checkstyle.org/google_style.html) Google's style guide through the use of a custom [configuration file](https://github.com/checkstyle/checkstyle/blob/master/src/main/resources/google_checks.xml).
 
-Similar to Google's formatter, checkstyle is packaged in a `jar` file that can be manually executed on student's code. Again, to avoid having students memorize a series of flags to run checkstyle, it is packaged in the custom `lint` command added to numbers. Students can thus lint their code with the following command:
+Similar to Google's formatter, Checkstyle is packaged in a `jar` file that can be manually executed on student's code. Again, to avoid having students memorize a series of flags to run Checkstyle, it is packaged in the custom `lint` command added to numbers. Students can thus lint their code with the following command:
 
 ```
 lint [file]
@@ -78,8 +78,8 @@ sudo bash install.sh
 The following versions of the formatter and linter are currently in use:
 
 - [google-java-format](https://github.com/google/google-java-format): 1.15.0
-- [checkstyle](https://github.com/checkstyle/checkstyle): 10.5.0
-- [checkstyle Google configuration](https://github.com/checkstyle/checkstyle/blob/master/src/main/resources/google_checks.xml): Last commit 2022-08-15
+- [Checkstyle](https://github.com/checkstyle/checkstyle): 10.5.0
+- [Checkstyle Google configuration](https://github.com/checkstyle/checkstyle/blob/master/src/main/resources/google_checks.xml): Last updated 2022-12-30
 
 To update these files, simply download them from the links below and overwrite the current versions in the [data](data) directory. Make sure to name them appropriately.
 
@@ -89,45 +89,40 @@ Download from the GitHub repo [releases page](https://github.com/google/google-j
 
 Remove the version number from the file name to allow the `format` command to identify it. Name it `google-java-format-all-deps.jar`.
 
-### checkstyle
+### Checkstyle
 
 Download from the GitHub repo [releases page](https://github.com/checkstyle/checkstyle/releases).
 
 Remove the version number from the file name to allow the `lint` command to identify it. Name it `checkstyle.jar`.
 
-### checkstyle Google configuration
+### Checkstyle Google configuration
 
-Download [google_checks.xml](https://github.com/checkstyle/checkstyle/blob/master/src/main/resources/google_checks.xml) in the checkstyle repository. Also see [this page](https://checkstyle.org/google_style.html).
+The [google_checks.xml](data/google_checks.xml) file was originally [downloaded](https://github.com/checkstyle/checkstyle/blob/master/src/main/resources/google_checks.xml) from the Checkstyle GitHub repository, as linked from the [Google support page](https://checkstyle.org/google_style.html). At the time of download, it was last updated 2022-08-15.
 
-Use the default name `google_checks.xml`.
+However, this file has since underwent significant modification to reflect the style conventions used at Eastern University. Therefore, it is inappropriate to simply download an updated version and replace the current copy.
 
-This file also requires making a slight modification. Since the default indentation used by the formater is changed to four-space, rather than two-space, the xml file must reflect this change. Locate the `Indentation` module and double the indentation number of each property as follows:
+Instead, see the [style guide changes](docs/style_guide_changes.md) document for detailed information about what elements of the `xml` were changed and why. In the event that updates are pushed to the source file in Checkstyle's repository, those changes should be individually applied to the local `google_checks.xml` file with appropriate documentation in the style guide changes document.
 
-```xml
-<module name="Indentation">
-  <property name="basicOffset" value="4"/>
-  <property name="braceAdjustment" value="4"/>
-  <property name="caseIndent" value="4"/>
-  <property name="throwsIndent" value="8"/>
-  <property name="lineWrappingIndentation" value="8"/>
-  <property name="arrayInitIndent" value="4"/>
-</module>
-```
+## Releasing New Versions
 
-## Release New Version
+After updating one or more of the above dependencies (or anything else in this library), complete the following steps in order:
 
-After updating one or more of the above dependencies (or anything else in this library), update the [version number](data/version) according to [semantic versioning](https://semver.org/), where dependency updates are considered minor changes. Commit all changes to GitHub.
+1.  Update the [version number](data/version) according to [semantic versioning](https://semver.org/). Note that dependency updates are considered minor changes.
 
-Next, run the [`package.sh`](package.sh) script to create a zip package with the following commands:
+2. Commit all changes to GitHub.
+
+3. Next, run the [`package.sh`](package.sh) script to create a zip package with the following commands:
+
+_Note: You must run the script from within its parent directory._
 
 ```sh
 cd java-code-quality/
 bash package.sh
 ```
 
-**Note: You must run the script from within its parent directory.**
+4. Upload the created zip file to GitHub as a new release.
 
-Upload the created zip file to GitHub as a new release. Then, [install](#installation) the new package on numbers.
+5. [Install](#installation) the new package on numbers.
 
 ## Credits
 

@@ -1,27 +1,29 @@
+<!--
+    This file is adapted from:
+    https://github.com/checkstyle/checkstyle/blob/master/src/main/resources/google_checks.xml
+
+    It represents the Google style guide for Java with a set of specific exceptions and
+    changes made to reflect a coherent style guide for Eastern University and improved
+    functionality with CodeGrade.
+
+    The changes made to this configuration are documented in /docs/styleguide_changes.md.
+
+
+    Original authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
+    Modified by: Simon Kwilinski
+-->
+
 <?xml version="1.0"?>
 <!DOCTYPE module PUBLIC
           "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
           "https://checkstyle.org/dtds/configuration_1_3.dtd">
-
-<!--
-    Checkstyle configuration that checks the Google coding conventions from Google Java Style
-    that can be found at https://google.github.io/styleguide/javaguide.html
-
-    Checkstyle is very configurable. Be sure to read the documentation at
-    http://checkstyle.org (or in your downloaded distribution).
-
-    To completely disable a check, just comment it out or delete it from the file.
-    To suppress certain violations please review suppression filters.
-
-    Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
- -->
 
 <module name="Checker">
   <module name="SuppressWarningsFilter"/>
 
   <property name="charset" value="UTF-8"/>
 
-  <property name="severity" value="warning"/>
+  <property name="severity" value="info"/>
 
   <property name="fileExtensions" value="java, properties, xml"/>
   <!-- Excludes all 'module-info.java' files              -->
@@ -36,7 +38,7 @@
     <property name="optional" value="true"/>
   </module>
 
-  <!-- Checks for whitespace                               -->
+  <!-- Checks for whitespace                            -->
   <!-- See http://checkstyle.org/config_whitespace.html -->
   <module name="FileTabCharacter">
     <property name="eachLine" value="true"/>
@@ -67,6 +69,14 @@
     <module name="NoLineWrap">
       <property name="tokens" value="PACKAGE_DEF, IMPORT, STATIC_IMPORT"/>
     </module>
+
+
+    <!--
+     ==============================
+      BRACES
+     ==============================
+     -->
+
     <module name="EmptyBlock">
       <property name="option" value="TEXT"/>
       <property name="tokens"
@@ -74,7 +84,10 @@
     </module>
     <module name="NeedBraces">
       <property name="tokens"
-               value="LITERAL_DO, LITERAL_ELSE, LITERAL_FOR, LITERAL_IF, LITERAL_WHILE"/>
+               value="LITERAL_DO, LITERAL_ELSE, LITERAL_FOR, LITERAL_IF, LITERAL_WHILE,
+                    LITERAL_CASE, LITERAL_DEFAULT, LAMBDA"/>
+      <property name="allowSingleLineStatement" value="true"/>
+      <property name="severity" value="warning"/>
     </module>
     <module name="LeftCurly">
       <property name="tokens"
@@ -98,6 +111,8 @@
                     INSTANCE_INIT, ANNOTATION_DEF, ENUM_DEF, INTERFACE_DEF, RECORD_DEF,
                     COMPACT_CTOR_DEF"/>
     </module>
+
+
     <module name="SuppressionXpathSingleFilter">
       <!-- suppresion is required till https://github.com/checkstyle/checkstyle/issues/7541 -->
       <property name="id" value="RightCurlyAlone"/>
@@ -173,72 +188,143 @@
       <property name="tokens" value="METHOD_REF"/>
       <property name="option" value="nl"/>
     </module>
-    <module name="PackageName">
-      <property name="format" value="^[a-z]+(\.[a-z][a-z0-9]*)*$"/>
+
+
+    <!--
+     ==============================
+      CAMEL CASE NAMES
+     ==============================
+     -->
+
+    <module name="CatchParameterName">
+      <property name="format" value="^[a-z][a-zA-Z0-9]+$"/>
+      <property name="severity" value="error"/>
       <message key="name.invalidPattern"
-             value="Package name ''{0}'' must match pattern ''{1}''."/>
+             value="Catch parameter name ''{0}'' must use camelCase with no underscores."/>
     </module>
+    <module name="LambdaParameterName">
+      <property name="format" value="^[a-z][a-zA-Z0-9]+$"/>
+      <property name="severity" value="error"/>
+      <message key="name.invalidPattern"
+             value="Lambda parameter name ''{0}'' must use camelCase with no underscores."/>
+    </module>
+    <module name="LocalVariableName">
+      <property name="format" value="^[a-z][a-zA-Z0-9]+$"/>
+      <property name="severity" value="error"/>
+      <message key="name.invalidPattern"
+             value="Local variable name ''{0}'' must use camelCase with no underscores."/>
+    </module>
+    <module name="MemberName">
+      <property name="format" value="^[a-z][a-zA-Z0-9]+$"/>
+      <property name="severity" value="error"/>
+      <message key="name.invalidPattern"
+             value="Member name ''{0}'' must use camelCase with no underscores."/>
+    </module>
+    <module name="MethodName">
+      <property name="format" value="^[a-z][a-zA-Z0-9]+$"/>
+      <property name="severity" value="error"/>
+      <message key="name.invalidPattern"
+             value="Method name ''{0}'' must use camelCase with no underscores."/>
+    </module>
+    <module name="ParameterName">
+      <property name="format" value="^[a-z][a-zA-Z0-9]+$"/>
+      <property name="severity" value="error"/>
+      <message key="name.invalidPattern"
+             value="Parameter name ''{0}'' must use camelCase with no underscores."/>
+    </module>
+    <module name="PatternVariableName">
+      <property name="format" value="^[a-z][a-zA-Z0-9]+$"/>
+      <property name="severity" value="error"/>
+      <message key="name.invalidPattern"
+             value="Pattern variable name ''{0}'' must use camelCase with no underscores."/>
+    </module>
+    <module name="RecordComponentName">
+      <property name="format" value="^[a-z][a-zA-Z0-9]+$"/>
+      <property name="severity" value="error"/>
+      <message key="name.invalidPattern"
+               value="Record component name ''{0}'' must use camelCase with no underscores."/>
+    </module>
+
+
+    <!--
+     ==============================
+      PASCAL CASE NAMES
+     ==============================
+     -->
     <module name="TypeName">
       <property name="tokens" value="CLASS_DEF, INTERFACE_DEF, ENUM_DEF,
                     ANNOTATION_DEF, RECORD_DEF"/>
+      <property name="severity" value="error"/>
       <message key="name.invalidPattern"
-             value="Type name ''{0}'' must match pattern ''{1}''."/>
+             value="Type name ''{0}'' must use Pascal case with no underscores."/>
     </module>
-    <module name="MemberName">
-      <property name="format" value="^[a-z][a-z0-9][a-zA-Z0-9]*$"/>
-      <message key="name.invalidPattern"
-             value="Member name ''{0}'' must match pattern ''{1}''."/>
-    </module>
-    <module name="ParameterName">
-      <property name="format" value="^[a-z]([a-z0-9][a-zA-Z0-9]*)?$"/>
-      <message key="name.invalidPattern"
-             value="Parameter name ''{0}'' must match pattern ''{1}''."/>
-    </module>
-    <module name="LambdaParameterName">
-      <property name="format" value="^[a-z]([a-z0-9][a-zA-Z0-9]*)?$"/>
-      <message key="name.invalidPattern"
-             value="Lambda parameter name ''{0}'' must match pattern ''{1}''."/>
-    </module>
-    <module name="CatchParameterName">
-      <property name="format" value="^[a-z]([a-z0-9][a-zA-Z0-9]*)?$"/>
-      <message key="name.invalidPattern"
-             value="Catch parameter name ''{0}'' must match pattern ''{1}''."/>
-    </module>
-    <module name="LocalVariableName">
-      <property name="format" value="^[a-z]([a-z0-9][a-zA-Z0-9]*)?$"/>
-      <message key="name.invalidPattern"
-             value="Local variable name ''{0}'' must match pattern ''{1}''."/>
-    </module>
-    <module name="PatternVariableName">
-      <property name="format" value="^[a-z]([a-z0-9][a-zA-Z0-9]*)?$"/>
-      <message key="name.invalidPattern"
-             value="Pattern variable name ''{0}'' must match pattern ''{1}''."/>
-    </module>
+
+
+    <!--
+     ==============================
+      ALL CAPITAL NAMES
+     ==============================
+     -->
+
     <module name="ClassTypeParameterName">
-      <property name="format" value="(^[A-Z][0-9]?)$|([A-Z][a-zA-Z0-9]*[T]$)"/>
+      <property name="format" value="^[A-Z][A-Z0-9]*$"/>
+      <property name="severity" value="error"/>
       <message key="name.invalidPattern"
-             value="Class type name ''{0}'' must match pattern ''{1}''."/>
-    </module>
-    <module name="RecordComponentName">
-      <property name="format" value="^[a-z]([a-z0-9][a-zA-Z0-9]*)?$"/>
-      <message key="name.invalidPattern"
-               value="Record component name ''{0}'' must match pattern ''{1}''."/>
+             value="Class type name ''{0}'' must use only capital letters and numbers."/>
     </module>
     <module name="RecordTypeParameterName">
-      <property name="format" value="(^[A-Z][0-9]?)$|([A-Z][a-zA-Z0-9]*[T]$)"/>
+      <property name="format" value="^[A-Z][A-Z0-9]*$"/>
+      <property name="severity" value="error"/>
       <message key="name.invalidPattern"
-               value="Record type name ''{0}'' must match pattern ''{1}''."/>
+               value="Record type name ''{0}'' must use only capital letters and numbers."/>
     </module>
     <module name="MethodTypeParameterName">
-      <property name="format" value="(^[A-Z][0-9]?)$|([A-Z][a-zA-Z0-9]*[T]$)"/>
+      <property name="format" value="^[A-Z][A-Z0-9]*$"/>
+      <property name="severity" value="error"/>
       <message key="name.invalidPattern"
-             value="Method type name ''{0}'' must match pattern ''{1}''."/>
+             value="Method type name ''{0}'' must use only capital letters and numbers."/>
     </module>
     <module name="InterfaceTypeParameterName">
-      <property name="format" value="(^[A-Z][0-9]?)$|([A-Z][a-zA-Z0-9]*[T]$)"/>
+      <property name="format" value="^[A-Z][A-Z0-9]*$"/>
+      <property name="severity" value="error"/>
       <message key="name.invalidPattern"
-             value="Interface type name ''{0}'' must match pattern ''{1}''."/>
+             value="Interface type name ''{0}'' must use only capital letters and numbers."/>
     </module>
+
+    <!--
+     ==============================
+      OTHER NAMES
+     ==============================
+     -->
+
+    <module name="ConstantName">
+      <property name="format" value="^[A-Z](_[A-Z0-9]+)*$"/>
+      <property name="severity" value="info"/>
+      <message key="name.invalidPattern"
+               value="Constant ''{0}'' should use UPPER_SNAKE_CASE."/>
+    </module>
+
+    <module name="PackageName">
+      <property name="format" value="^[a-z]+(\.[a-z][a-z0-9]*)*$"/>
+      <property name="severity" value="error"/>
+      <message key="name.invalidPattern"
+             value="Package name ''{0}'' must use only lowercase letters and numbers."/>
+    </module>
+
+    <module name="AbbreviationAsWordInName">
+      <property name="ignoreFinal" value="false"/>
+      <property name="ignoreStatic" value="false"/>
+      <property name="allowedAbbreviationLength" value="0"/>
+      <property name="tokens"
+               value="CLASS_DEF, INTERFACE_DEF, ENUM_DEF, ANNOTATION_DEF, ANNOTATION_FIELD_DEF,
+                    PARAMETER_DEF, VARIABLE_DEF, METHOD_DEF, PATTERN_VARIABLE_DEF, RECORD_DEF,
+                    RECORD_COMPONENT_DEF"/>
+      <property name="severity" value="error"/>
+      <message key="abbreviation.as.word"
+               value="Name ''{0}'' must use camelCase (no consecutive uppercase letters)."/>
+    </module>
+
+
     <module name="NoFinalizer"/>
     <module name="GenericWhitespace">
       <message key="ws.followed"
@@ -257,14 +343,6 @@
       <property name="throwsIndent" value="8"/>
       <property name="lineWrappingIndentation" value="8"/>
       <property name="arrayInitIndent" value="4"/>
-    </module>
-    <module name="AbbreviationAsWordInName">
-      <property name="ignoreFinal" value="false"/>
-      <property name="allowedAbbreviationLength" value="0"/>
-      <property name="tokens"
-               value="CLASS_DEF, INTERFACE_DEF, ENUM_DEF, ANNOTATION_DEF, ANNOTATION_FIELD_DEF,
-                    PARAMETER_DEF, VARIABLE_DEF, METHOD_DEF, PATTERN_VARIABLE_DEF, RECORD_DEF,
-                    RECORD_COMPONENT_DEF"/>
     </module>
     <module name="NoWhitespaceBeforeCaseDefaultColon"/>
     <module name="OverloadMethodsDeclarationOrder"/>
@@ -313,6 +391,13 @@
       <property name="allowSamelineMultipleAnnotations" value="true"/>
     </module>
     <module name="NonEmptyAtclauseDescription"/>
+
+    <!--
+     ==============================
+      JAVADOCS
+     ==============================
+     -->
+
     <module name="InvalidJavadocPosition"/>
     <module name="JavadocTagContinuationIndentation"/>
     <module name="SummaryJavadoc">
@@ -337,6 +422,8 @@
       <property name="scope" value="public"/>
       <property name="minLineCount" value="2"/>
       <property name="allowedAnnotations" value="Override, Test"/>
+      <property name="ignoreMethodNamesRegex" value="^main$"/>
+      <property name="severity" value="error"/>
       <property name="tokens" value="METHOD_DEF, CTOR_DEF, ANNOTATION_FIELD_DEF,
                                    COMPACT_CTOR_DEF"/>
     </module>
@@ -347,12 +434,9 @@
                       RECORD_DEF, ANNOTATION_DEF"/>
       <property name="excludeScope" value="nothing"/>
     </module>
-    <module name="MethodName">
-      <property name="format" value="^[a-z][a-z0-9]\w*$"/>
-      <message key="name.invalidPattern"
-             value="Method name ''{0}'' must match pattern ''{1}''."/>
-    </module>
     <module name="SingleLineJavadoc"/>
+
+
     <module name="EmptyCatchBlock">
       <property name="exceptionVariableName" value="expected"/>
     </module>
