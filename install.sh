@@ -31,7 +31,7 @@ cp cli/* /bin/
 chmod a+x /bin/format
 chmod a+x /bin/lint
 
-dir=java-code-quality
+dir=/opt/java-code-quality/
 mkdir $dir
 cp -r data/* $dir
 cp format-checker.py $dir
