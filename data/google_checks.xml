@@ -2,20 +2,20 @@
 <!DOCTYPE module PUBLIC "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN" "https://checkstyle.org/dtds/configuration_1_3.dtd">
 
 <!--
-    This file is adapted from:
+This file is adapted from:
 https://github.com/checkstyle/checkstyle/blob/master/src/main/resources/google_checks.xml
+-->
 
-    It
-represents the Google style guide for Java with a set of specific exceptions and
-    changes made to
-reflect a coherent style guide for Eastern University and improved
-    functionality with CodeGrade.
-The changes made to this configuration are documented in /docs/style_guide_changes.md.
+<!--
+It represents the Google style guide for Java with a set of specific exceptions and changes
+made to reflect a coherent style guide for Eastern University and improved functionality with
+CodeGrade.
+    
+The changes made to this configuration are documented in
+/docs/style_guide_changes.md.
 
-
-    Original
-authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
-    Modified by: Simon Kwilinski
+Original authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
+Modified by: Simon Kwilinski
 -->
 
 <module name="Checker">
@@ -441,7 +441,7 @@ authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
         <!--
          ==============================
           IMPORTS
-         ==============================
+        ==============================
          -->
 
         <module name="CustomImportOrder">
@@ -455,7 +455,7 @@ authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
         <!--
          ==============================
           JAVADOCS
-         ==============================
+        ==============================
          -->
 
         <module name="InvalidJavadocPosition" />
@@ -503,7 +503,7 @@ authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
         <!--
          ==============================
           MODIFIERS
-         ==============================
+        ==============================
          -->
 
         <module name="ModifierOrder">
@@ -514,7 +514,7 @@ authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
         <!--
          ==============================
           MISCELLANEOUS
-         ==============================
+        ==============================
          -->
 
         <module name="UpperEll">
