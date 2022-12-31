@@ -4,7 +4,8 @@
 2. [Changes](#changes)
    1. [Global](#global)
    2. [Comments](#comments)
-   3. [Indentation](#indentation)
+   3. [Whitespace](#whitespace)
+      1. [Indentation](#indentation)
    4. [Braces](#braces)
       1. [Single-line Statements](#single-line-statements)
       2. [Other Brace Rules](#other-brace-rules)
@@ -15,8 +16,14 @@
       4. [Constants](#constants)
       5. [Packages](#packages)
       6. [Other Naming Changes](#other-naming-changes)
-   6. [Whitespace and Separators](#whitespace-and-separators)
-   7. [Javadocs](#javadocs)
+   6. [Javadocs](#javadocs)
+   7. [Annotations](#annotations)
+   8. [Block Checks](#block-checks)
+   9. [Coding](#coding)
+   10. [Imports](#imports)
+   11. [Javadocs](#javadocs)
+   12. [Modifiers](#modifiers)
+   13. [Miscellaneous](#miscellaneous)
 
 # Summary
 
@@ -48,6 +55,26 @@ The global `Checker` module was set to the `info` severity level. Therefore, unl
 ## Comments
 
 Many of the comments in the original `xml` were removed or modified as necessary. Additionally, many `xml` `module` attributes were rearranged to better suit documentation purposes.
+
+## Whitespace
+
+The following modules pertaining to whitespace and separators were set to severity level `warning`:
+
+- `WhitespaceAfter`
+- `WhitespaceAround`
+- `OneStatementPerLine`
+- `MultipleVariableDeclarations`
+- `ArrayTypeStyle`
+- `MissingSwitchDefault`
+- `FallThrough`
+- `UpperEll`
+- `ModifierOrder`
+- `EmptyLineSeparator`
+- `SeparatorWrap`
+- `SeparatorWrap`
+- `SeparatorWrap`
+- `SeparatorWrap`
+- `SeparatorWrap`
 
 ## Indentation
 
@@ -202,25 +229,36 @@ The `AbbreviationAsWordInName` module was changed to disable ignoring `static` n
 
 It was set to the severity level `error`.
 
-## Whitespace and Separators
+## Annotations
 
-The following modules pertaining to whitespace and separators were set to severity level `warning`:
+The following modules were categorized "Annotations":
 
-- `WhitespaceAfter`
-- `WhitespaceAround`
+- `AnnotationLocation`
+- `AnnotationLocation`
+
+## Block Checks
+
+The following modules were categorized "Block Checks":
+
+- `EmptyCatchBlock`
+
+## Coding
+
+The following modules were categorized "Coding":
+
+- `FallThrough`
 - `OneStatementPerLine`
 - `MultipleVariableDeclarations`
-- `ArrayTypeStyle`
 - `MissingSwitchDefault`
-- `FallThrough`
-- `UpperEll`
-- `ModifierOrder`
-- `EmptyLineSeparator`
-- `SeparatorWrap`
-- `SeparatorWrap`
-- `SeparatorWrap`
-- `SeparatorWrap`
-- `SeparatorWrap`
+- `NoFinalizer`
+- `OverloadMethodsDeclarationOrder`
+- `VariableDeclarationUsageDistance`
+
+## Imports
+
+The following modules were categorized "Imports":
+
+- `CustomImportOrder`
 
 ## Javadocs
 
@@ -230,3 +268,21 @@ The `MissingJavadocMethod` module was modified to exclude the `main` method from
 <property name="ignoreMethodNamesRegex" value="^main$"/>
 <property name="severity" value="error"/>
 ```
+
+## Modifiers
+
+The following modules were categorized "Modifiers":
+
+- `ModifierOrder`
+
+## Miscellaneous
+
+The following modules were categorized "Miscellaneous":
+
+- `UpperEll`
+- `ArrayTypeStyle`
+- `CommentsIndentation`
+- `SuppressionXpathFilter`
+- `SuppressWarningsHolder`
+- `SuppressionCommentFilter`
+- `SuppressWithNearbyCommentFilter`
