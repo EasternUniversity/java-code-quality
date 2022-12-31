@@ -221,7 +221,9 @@ Modified by: Simon Kwilinski
                 value="LITERAL_DO, LITERAL_ELSE, LITERAL_FOR, LITERAL_IF, LITERAL_WHILE,
                     LITERAL_CASE, LITERAL_DEFAULT, LAMBDA" />
             <property name="allowSingleLineStatement" value="true" />
-            <property name="severity" value="warning" />
+            <property name="severity" value="error" />
+            <message key="needBraces"
+                value="''{0}'' statement must either use ''{}''s or only span one line." />
         </module>
         <module name="LeftCurly">
             <property name="tokens"
