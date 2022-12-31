@@ -34,4 +34,8 @@ chmod a+x /bin/lint
 mkdir /opt/java-code-quality/
 cp -r data/* /opt/java-code-quality/
 
+echo "Installing python-Levenshtein..."
+
+pip3 install python3-Levenshtein
+
 echo "Successfully installed java-code-quality"
