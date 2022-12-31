@@ -58,13 +58,13 @@ def main():
         total_levenshtein += levenshtein_format(file)
     
     if total_levenshtein == 0:
-        print(1)
+        print(1.0)
     elif total_levenshtein <= 3:
         print(0.7)
     elif total_levenshtein <= 7:
         print(0.5)
     else:
-        print(0)
+        print(0.0)
 
 
 def levenshtein_format(file: str) -> int:
