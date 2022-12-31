@@ -81,6 +81,7 @@
       <property name="option" value="TEXT"/>
       <property name="tokens"
                value="LITERAL_TRY, LITERAL_FINALLY, LITERAL_IF, LITERAL_ELSE, LITERAL_SWITCH"/>
+      <property name="severity" value="warning"/>
     </module>
     <module name="NeedBraces">
       <property name="tokens"
@@ -96,12 +97,14 @@
                     LITERAL_DO, LITERAL_ELSE, LITERAL_FINALLY, LITERAL_FOR, LITERAL_IF,
                     LITERAL_SWITCH, LITERAL_SYNCHRONIZED, LITERAL_TRY, LITERAL_WHILE, METHOD_DEF,
                     OBJBLOCK, STATIC_INIT, RECORD_DEF, COMPACT_CTOR_DEF"/>
+      <property name="severity" value="warning"/>
     </module>
     <module name="RightCurly">
       <property name="id" value="RightCurlySame"/>
       <property name="tokens"
                value="LITERAL_TRY, LITERAL_CATCH, LITERAL_FINALLY, LITERAL_IF, LITERAL_ELSE,
                     LITERAL_DO"/>
+      <property name="severity" value="warning"/>
     </module>
     <module name="RightCurly">
       <property name="id" value="RightCurlyAlone"/>
@@ -110,21 +113,29 @@
                value="CLASS_DEF, METHOD_DEF, CTOR_DEF, LITERAL_FOR, LITERAL_WHILE, STATIC_INIT,
                     INSTANCE_INIT, ANNOTATION_DEF, ENUM_DEF, INTERFACE_DEF, RECORD_DEF,
                     COMPACT_CTOR_DEF"/>
+      <property name="severity" value="warning"/>
     </module>
-
-
     <module name="SuppressionXpathSingleFilter">
       <!-- suppresion is required till https://github.com/checkstyle/checkstyle/issues/7541 -->
       <property name="id" value="RightCurlyAlone"/>
       <property name="query" value="//RCURLY[parent::SLIST[count(./*)=1]
                                      or preceding-sibling::*[last()][self::LCURLY]]"/>
     </module>
+
+
+    <!--
+     ==============================
+      WHITESPACE AND SEPARATORS
+     ==============================
+     -->
+
     <module name="WhitespaceAfter">
       <property name="tokens"
                value="COMMA, SEMI, TYPECAST, LITERAL_IF, LITERAL_ELSE, LITERAL_RETURN,
                     LITERAL_WHILE, LITERAL_DO, LITERAL_FOR, LITERAL_FINALLY, DO_WHILE, ELLIPSIS,
                     LITERAL_SWITCH, LITERAL_SYNCHRONIZED, LITERAL_TRY, LITERAL_CATCH, LAMBDA,
                     LITERAL_YIELD, LITERAL_CASE"/>
+      <property name="severity" value="warning"/>
     </module>
     <module name="WhitespaceAround">
       <property name="allowEmptyConstructors" value="true"/>
@@ -141,52 +152,73 @@
                     LITERAL_TRY, LITERAL_WHILE, LOR, LT, MINUS, MINUS_ASSIGN, MOD, MOD_ASSIGN,
                     NOT_EQUAL, PLUS, PLUS_ASSIGN, QUESTION, RCURLY, SL, SLIST, SL_ASSIGN, SR,
                     SR_ASSIGN, STAR, STAR_ASSIGN, LITERAL_ASSERT, TYPE_EXTENSION_AND"/>
+      <property name="severity" value="warning"/>
       <message key="ws.notFollowed"
               value="WhitespaceAround: ''{0}'' is not followed by whitespace. Empty blocks
                may only be represented as '{}' when not part of a multi-block statement (4.1.3)"/>
       <message key="ws.notPreceded"
               value="WhitespaceAround: ''{0}'' is not preceded with whitespace."/>
     </module>
-    <module name="OneStatementPerLine"/>
-    <module name="MultipleVariableDeclarations"/>
-    <module name="ArrayTypeStyle"/>
-    <module name="MissingSwitchDefault"/>
-    <module name="FallThrough"/>
-    <module name="UpperEll"/>
-    <module name="ModifierOrder"/>
+    <module name="OneStatementPerLine">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="MultipleVariableDeclarations">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="ArrayTypeStyle">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="MissingSwitchDefault">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="FallThrough">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="UpperEll">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="ModifierOrder">
+      <property name="severity" value="warning"/>
+    </module>
     <module name="EmptyLineSeparator">
       <property name="tokens"
                value="PACKAGE_DEF, IMPORT, STATIC_IMPORT, CLASS_DEF, INTERFACE_DEF, ENUM_DEF,
                     STATIC_INIT, INSTANCE_INIT, METHOD_DEF, CTOR_DEF, VARIABLE_DEF, RECORD_DEF,
                     COMPACT_CTOR_DEF"/>
       <property name="allowNoEmptyLineBetweenFields" value="true"/>
+      <property name="severity" value="warning"/>
     </module>
     <module name="SeparatorWrap">
       <property name="id" value="SeparatorWrapDot"/>
       <property name="tokens" value="DOT"/>
       <property name="option" value="nl"/>
+      <property name="severity" value="warning"/>
     </module>
     <module name="SeparatorWrap">
       <property name="id" value="SeparatorWrapComma"/>
       <property name="tokens" value="COMMA"/>
       <property name="option" value="EOL"/>
+      <property name="severity" value="warning"/>
     </module>
     <module name="SeparatorWrap">
       <!-- ELLIPSIS is EOL until https://github.com/google/styleguide/issues/259 -->
       <property name="id" value="SeparatorWrapEllipsis"/>
       <property name="tokens" value="ELLIPSIS"/>
       <property name="option" value="EOL"/>
+      <property name="severity" value="warning"/>
     </module>
     <module name="SeparatorWrap">
       <!-- ARRAY_DECLARATOR is EOL until https://github.com/google/styleguide/issues/258 -->
       <property name="id" value="SeparatorWrapArrayDeclarator"/>
       <property name="tokens" value="ARRAY_DECLARATOR"/>
       <property name="option" value="EOL"/>
+      <property name="severity" value="warning"/>
     </module>
     <module name="SeparatorWrap">
       <property name="id" value="SeparatorWrapMethodRef"/>
       <property name="tokens" value="METHOD_REF"/>
       <property name="option" value="nl"/>
+      <property name="severity" value="warning"/>
     </module>
 
 

@@ -1,12 +1,24 @@
-## Outline
+# Outline
 
 1. [Summary](#summary)
 2. [Changes](#changes)
-   1. [Comments](#comments)
-   2. [Indentation](#indentation)
-   3. [Braces](#braces)
+   1. [Global](#global)
+   2. [Comments](#comments)
+   3. [Indentation](#indentation)
+   4. [Braces](#braces)
+      1. [Single-line Statements](#single-line-statements)
+      2. [Other Brace Rules](#other-brace-rules)
+   5. [Naming](#naming)
+      1. [Camel Case Modules](#camel-case-modules)
+      2. [Pascal Case Modules](#pascal-case-modules)
+      3. [All Capitals](#all-capitals)
+      4. [Constants](#constants)
+      5. [Packages](#packages)
+      6. [Other Naming Changes](#other-naming-changes)
+   6. [Whitespace and Separators](#whitespace-and-separators)
+   7. [Javadocs](#javadocs)
 
-## Summary
+# Summary
 
 This file outlines the changes made to the [`google_checks.xml`](data/google_checks.xml) file, which was originally obtained from a [file](https://github.com/checkstyle/checkstyle/blob/master/src/main/resources/google_checks.xml) on Checkstyle's GitHub repository.
 
@@ -20,9 +32,9 @@ Changes were made in order to:
 
 - Add better messages to certain warnings explaining what they mean.
 
-## Changes
+# Changes
 
-### Global
+## Global
 
 The global `Checker` module was set to the `info` severity level. Therefore, unless otherwise specified, all errors will not result in a loss of points in CodeGrade.
 
@@ -33,11 +45,11 @@ The global `Checker` module was set to the `info` severity level. Therefore, unl
 </module>
 ```
 
-### Comments
+## Comments
 
 Many of the comments in the original `xml` were removed or modified as necessary. Additionally, many `xml` `module` attributes were rearranged to better suit documentation purposes.
 
-### Indentation
+## Indentation
 
 Default indentation is now 4 spaces, rather than 2. This is done in conjunction with the `--aosp` option built-in to Google's [formatter](https://github.com/google/google-java-format).
 
@@ -56,7 +68,9 @@ Default indentation is now 4 spaces, rather than 2. This is done in conjunction 
 
 _All values are doubled from the original._
 
-### Braces
+## Braces
+
+### Single-line Statements
 
 Brackets are not required on single-line if statements.
 
@@ -121,13 +135,21 @@ The `xml` was changed to enable the `allowSingleLineStatement` property and set 
 </module>
 ```
 
-### Naming
+### Other Brace Rules
+
+The following modules were changed to severity level `warning`:
+
+- `EmptyBlock`
+- `LeftCurly`
+- `RightCurly`
+
+## Naming
 
 Naming conventions are predominately based on Google's style guide, with some exceptions. For example, underscores are now strictly prohibited (except in constant names).
 
 In _most_ cases, either [camel](https://en.wikipedia.org/wiki/Camel_case) or Pascal case are strictly enforced.
 
-#### Camel Case Modules
+### Camel Case Modules
 
 A number of modules were changed in the following ways. They now:
 
@@ -147,11 +169,11 @@ These modules include the following:
 - `PatternVariableName`
 - `RecordComponentName`
 
-#### Pascal Case Modules
+### Pascal Case Modules
 
 The `TypeName` module was changed in a similar fashion, except that it requires Pascal case.
 
-#### All Capitals
+### All Capitals
 
 These modules, which effect the naming of generics, require only capital letters and numbers. This is significantly more restrictive than Google's [requirements](https://google.github.io/styleguide/javaguide.html#s5.2.8-type-variable-names). They include:
 
@@ -162,15 +184,15 @@ These modules, which effect the naming of generics, require only capital letters
 
 These modules all use the severity level `error`.
 
-#### Constants
+### Constants
 
 The `ConstantName` module was added and set to require upper snake case. However, since constant naming [cannot](https://checkstyle.org/google_style.html#a5.2.4) be enforced perfectly in accord with Google's [style](https://google.github.io/styleguide/javaguide.html#s5.2.4-constant-names), the severity level is set to `info`, which does not cause students to lose points in CodeGrade.
 
-#### Packages
+### Packages
 
 The `PackageName` module was kept using Google's [style](https://google.github.io/styleguide/javaguide.html#s5.2.1-package-names) of only lowercase letters and numbers. Its severity level was set to `error`.
 
-#### Other Naming Changes
+### Other Naming Changes
 
 The `AbbreviationAsWordInName` module was changed to disable ignoring `static` names:
 
@@ -180,7 +202,27 @@ The `AbbreviationAsWordInName` module was changed to disable ignoring `static` n
 
 It was set to the severity level `error`.
 
-### Javadocs
+## Whitespace and Separators
+
+The following modules pertaining to whitespace and separators were set to severity level `warning`:
+
+- `WhitespaceAfter`
+- `WhitespaceAround`
+- `OneStatementPerLine`
+- `MultipleVariableDeclarations`
+- `ArrayTypeStyle`
+- `MissingSwitchDefault`
+- `FallThrough`
+- `UpperEll`
+- `ModifierOrder`
+- `EmptyLineSeparator`
+- `SeparatorWrap`
+- `SeparatorWrap`
+- `SeparatorWrap`
+- `SeparatorWrap`
+- `SeparatorWrap`
+
+## Javadocs
 
 The `MissingJavadocMethod` module was modified to exclude the `main` method from requiring Javadocs. It was also set to the `error` severity level.
 
