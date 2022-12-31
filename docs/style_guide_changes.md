@@ -254,6 +254,8 @@ The following modules were categorized "Coding":
 - `OverloadMethodsDeclarationOrder`
 - `VariableDeclarationUsageDistance`
 
+The `OneStatementPerLine` and `MissingSwitchDefault` modules now have severity level `error`.
+
 ## Imports
 
 The following modules were categorized "Imports":
@@ -262,12 +264,30 @@ The following modules were categorized "Imports":
 
 ## Javadocs
 
+The following modules were categorized "Javadocs":
+
+- `InvalidJavadocPosition`
+- `JavadocTagContinuationIndentation`
+- `SummaryJavadoc`
+- `JavadocParagraph`
+- `RequireEmptyLineBeforeBlockTagGroup`
+- `AtclauseOrder`
+- `JavadocMethod`
+- `MissingJavadocMethod`
+- `MissingJavadocType`
+- `SingleLineJavadoc`
+- `NonEmptyAtclauseDescription`
+
 The `MissingJavadocMethod` module was modified to exclude the `main` method from requiring Javadocs. It was also set to the `error` severity level.
 
 ```xml
 <property name="ignoreMethodNamesRegex" value="^main$"/>
 <property name="severity" value="error"/>
 ```
+
+The `JavadocMethod`, `MissingJavadocType`, and `NonEmptyAtclauseDescription` modules now have security level `error`.
+
+The `RequireEmptyLineBeforeBlockTagGroup`, `AtclauseOrder`, and `SingleLineJavadoc` modules now have security level `warning`.
 
 ## Modifiers
 
@@ -277,11 +297,11 @@ The following modules were categorized "Modifiers":
 
 ## Miscellaneous
 
-The following modules were categorized "Miscellaneous":
+The following modules were categorized "Miscellaneous". Those marked with * were changed to security level `warning`.
 
-- `UpperEll`
-- `ArrayTypeStyle`
-- `CommentsIndentation`
+- `UpperEll`*
+- `ArrayTypeStyle`*
+- `CommentsIndentation`*
 - `SuppressionXpathFilter`
 - `SuppressWarningsHolder`
 - `SuppressionCommentFilter`

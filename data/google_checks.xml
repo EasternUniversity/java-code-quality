@@ -85,6 +85,7 @@ Modified by: Simon Kwilinski
             <property name="throwsIndent" value="8" />
             <property name="lineWrappingIndentation" value="8" />
             <property name="arrayInitIndent" value="4" />
+            <property name="severity" value="warning" />
         </module>
 
         <module name="WhitespaceAfter">
@@ -166,18 +167,23 @@ Modified by: Simon Kwilinski
                 value="GenericWhitespace ''{0}'' should followed by whitespace." />
             <message key="ws.notPreceded"
                 value="GenericWhitespace ''{0}'' is not preceded with whitespace." />
+            <property name="severity" value="warning" />
         </module>
-        <module name="NoWhitespaceBeforeCaseDefaultColon" />
+        <module name="NoWhitespaceBeforeCaseDefaultColon">
+            <property name="severity" value="warning" />
+        </module>
         <module name="MethodParamPad">
             <property name="tokens"
                 value="CTOR_DEF, LITERAL_NEW, METHOD_CALL, METHOD_DEF,
                     SUPER_CTOR_CALL, ENUM_CONSTANT_DEF, RECORD_DEF" />
+            <property name="severity" value="warning" />
         </module>
         <module name="NoWhitespaceBefore">
             <property name="tokens"
                 value="COMMA, SEMI, POST_INC, POST_DEC, DOT,
                     LABELED_STAT, METHOD_REF" />
             <property name="allowLineBreaks" value="true" />
+            <property name="severity" value="warning" />
         </module>
         <module name="ParenPad">
             <property name="tokens"
@@ -186,6 +192,7 @@ Modified by: Simon Kwilinski
                     LITERAL_SWITCH, LITERAL_SYNCHRONIZED, LITERAL_WHILE, METHOD_CALL,
                     METHOD_DEF, QUESTION, RESOURCE_SPECIFICATION, SUPER_CTOR_CALL, LAMBDA,
                     RECORD_DEF" />
+            <property name="severity" value="warning" />
         </module>
         <module name="OperatorWrap">
             <property name="option" value="NL" />
@@ -193,6 +200,7 @@ Modified by: Simon Kwilinski
                 value="BAND, BOR, BSR, BXOR, DIV, EQUAL, GE, GT, LAND, LE, LITERAL_INSTANCEOF, LOR,
                     LT, MINUS, MOD, NOT_EQUAL, PLUS, QUESTION, SL, SR, STAR, METHOD_REF,
                     TYPE_EXTENSION_AND " />
+            <property name="severity" value="warning" />
         </module>
 
 
@@ -422,16 +430,14 @@ Modified by: Simon Kwilinski
          -->
 
         <module name="FallThrough">
-            <property name="severity" value="warning" />
         </module>
         <module name="OneStatementPerLine">
-            <property name="severity" value="warning" />
+            <property name="severity" value="error" />
         </module>
         <module name="MultipleVariableDeclarations">
-            <property name="severity" value="warning" />
         </module>
         <module name="MissingSwitchDefault">
-            <property name="severity" value="warning" />
+            <property name="severity" value="error" />
         </module>
         <module name="NoFinalizer" />
         <module name="OverloadMethodsDeclarationOrder" />
@@ -465,11 +471,14 @@ Modified by: Simon Kwilinski
                 value="^@return the *|^This method returns |^A [{]@code [a-zA-Z0-9]+[}]( is a )" />
         </module>
         <module name="JavadocParagraph" />
-        <module name="RequireEmptyLineBeforeBlockTagGroup" />
+        <module name="RequireEmptyLineBeforeBlockTagGroup">
+            <property name="severity" value="warning" />
+        </module>
         <module name="AtclauseOrder">
             <property name="tagOrder" value="@param, @return, @throws, @deprecated" />
             <property name="target"
                 value="CLASS_DEF, INTERFACE_DEF, ENUM_DEF, METHOD_DEF, CTOR_DEF, VARIABLE_DEF" />
+            <property name="severity" value="warning" />
         </module>
         <module name="JavadocMethod">
             <property name="accessModifiers" value="public" />
@@ -478,16 +487,17 @@ Modified by: Simon Kwilinski
             <property name="allowedAnnotations" value="Override, Test" />
             <property name="tokens"
                 value="METHOD_DEF, CTOR_DEF, ANNOTATION_FIELD_DEF, COMPACT_CTOR_DEF" />
+            <property name="severity" value="error" />
         </module>
         <module name="MissingJavadocMethod">
             <property name="scope" value="public" />
             <property name="minLineCount" value="2" />
             <property name="allowedAnnotations" value="Override, Test" />
             <property name="ignoreMethodNamesRegex" value="^main$" />
-            <property name="severity" value="error" />
             <property name="tokens"
                 value="METHOD_DEF, CTOR_DEF, ANNOTATION_FIELD_DEF,
                                    COMPACT_CTOR_DEF" />
+            <property name="severity" value="error" />
         </module>
         <module name="MissingJavadocType">
             <property name="scope" value="protected" />
@@ -495,9 +505,14 @@ Modified by: Simon Kwilinski
                 value="CLASS_DEF, INTERFACE_DEF, ENUM_DEF,
                       RECORD_DEF, ANNOTATION_DEF" />
             <property name="excludeScope" value="nothing" />
+            <property name="severity" value="error" />
         </module>
-        <module name="SingleLineJavadoc" />
-        <module name="NonEmptyAtclauseDescription" />
+        <module name="SingleLineJavadoc">
+            <property name="severity" value="warning" />
+        </module>
+        <module name="NonEmptyAtclauseDescription">
+            <property name="severity" value="error" />
+        </module>
 
 
         <!--
@@ -525,6 +540,7 @@ Modified by: Simon Kwilinski
         </module>
         <module name="CommentsIndentation">
             <property name="tokens" value="SINGLE_LINE_COMMENT, BLOCK_COMMENT_BEGIN" />
+            <property name="severity" value="warning" />
         </module>
         <!-- https://checkstyle.org/config_filters.html#SuppressionXpathFilter -->
         <module name="SuppressionXpathFilter">
