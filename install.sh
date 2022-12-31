@@ -31,8 +31,10 @@ cp cli/* /bin/
 chmod a+x /bin/format
 chmod a+x /bin/lint
 
-mkdir /opt/java-code-quality/
-cp -r data/* /opt/java-code-quality/
+dir=java-code-quality
+mkdir $dir
+cp -r data/* $dir
+cp format-checker.py $dir
 
 echo "Installing python-Levenshtein..."
 
