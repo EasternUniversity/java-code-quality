@@ -5,9 +5,9 @@ This library manages the formatter and linter CLI for Java on numbers. It allows
 ## Contents
 
 1. [Introduction](#introduction)
-2. [Formatting](#formatting)
-3. [Linting](#linting)
-4. [Installation](#installation)
+2. [Installation](#installation)
+3. [Formatting](#formatting)
+4. [Linting](#linting)
 5. [Updating](#updating)
    1. [google-java-format](#google-java-format)
    2. [Checkstyle](#checkstyle)
@@ -18,6 +18,34 @@ This library manages the formatter and linter CLI for Java on numbers. It allows
 ## Introduction
 
 The purpose of this library is to help students understand the importance of code style. It shows them how to properly format Java code, and teaches them to lint their code to identify a variety of infelicities.
+
+## Installation
+
+Installing the latest version of `java-code-quality` simply requires downloading the latest release and running the `install.sh` file with `bash`. Any previous versions are automatically removed by the installer.
+
+1. Download the `zip` file from the [latest release](https://github.com/EasternUniversity/java-code-quality/releases/latest).
+
+2. Transfer the `zip` file to the server where it will be installed.
+
+3. In a terminal, unzip the file using the following command:
+
+```sh
+unzip java-code-quality-x.y.z.zip
+```
+
+4. Enter the new `java-code-quality` directory:
+
+```sh
+cd java-code-quality
+```
+
+5. Make the `install.sh` file executable, and then run it as the superuser:
+
+```sh
+sudo bash install.sh
+```
+
+6. You may now safely delete the `java-code-quality` directory and the `zip` file. The latest version has been installed.
 
 ## Formatting
 
@@ -44,34 +72,6 @@ Similar to Google's formatter, Checkstyle is packaged in a `jar` file that can b
 ```
 lint [file]
 ```
-
-## Installation
-
-Installing the latest version of `java-code-quality` simply requires downloading the latest release and running the `install.sh` file with `bash`. Any previous versions are automatically removed by the installer.
-
-1. Download the latest `zip` file from the [releases](https://github.com/EasternUniversity/java-code-quality/releases) page.
-
-2. Transfer the `zip` file to the server where it will be installed.
-
-3. In a terminal, unzip the file using the following command:
-
-```sh
-unzip java-code-quality-x.y.z.zip
-```
-
-4. Enter the new `java-code-quality` directory:
-
-```sh
-cd java-code-quality
-```
-
-5. Make the `install.sh` file executable, and then run it as the superuser:
-
-```sh
-sudo bash install.sh
-```
-
-6. You may now safely delete the `java-code-quality` directory and the `zip` file. The latest version has been installed.
 
 ## Updating
 
