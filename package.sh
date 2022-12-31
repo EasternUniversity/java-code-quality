@@ -19,6 +19,7 @@ mkdir java-code-quality/
 cp -r data/ java-code-quality/
 cp -r cli/ java-code-quality/
 cp install.sh java-code-quality/
+cp format-checker/format-checker.py java-code-quality/
 
 zip -rq $path java-code-quality/
 
