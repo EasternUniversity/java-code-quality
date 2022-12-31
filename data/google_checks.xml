@@ -223,7 +223,7 @@ Modified by: Simon Kwilinski
             <property name="allowSingleLineStatement" value="true" />
             <property name="severity" value="error" />
             <message key="needBraces"
-                value="''{0}'' statement must either use ''{}''s or only span one line." />
+                value="''{0}'' command must either use '''{}'''s or only span one line." />
         </module>
         <module name="LeftCurly">
             <property name="tokens"
