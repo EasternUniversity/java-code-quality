@@ -47,8 +47,8 @@ The global `Checker` module was set to the `info` severity level. Therefore, unl
 
 ```xml
 <module name="Checker">
-  <property name="severity" value="info"/>
-  ...
+    <property name="severity" value="info" />
+    ...
 </module>
 ```
 
@@ -84,12 +84,12 @@ Default indentation is now 4 spaces, rather than 2. This is done in conjunction 
 
 ```xml
 <module name="Indentation">
-  <property name="basicOffset" value="4"/>
-  <property name="braceAdjustment" value="4"/>
-  <property name="caseIndent" value="4"/>
-  <property name="throwsIndent" value="8"/>
-  <property name="lineWrappingIndentation" value="8"/>
-  <property name="arrayInitIndent" value="4"/>
+    <property name="basicOffset" value="4" />
+    <property name="braceAdjustment" value="4" />
+    <property name="caseIndent" value="4" />
+    <property name="throwsIndent" value="8" />
+    <property name="lineWrappingIndentation" value="8" />
+    <property name="arrayInitIndent" value="4" />
 </module>
 ```
 
@@ -154,13 +154,13 @@ The `xml` was changed to enable the `allowSingleLineStatement` property and set 
 
 ```xml
 <module name="NeedBraces">
-  <property name="tokens"
-    value="LITERAL_DO, LITERAL_ELSE, LITERAL_FOR, LITERAL_IF, LITERAL_WHILE,
-         LITERAL_CASE, LITERAL_DEFAULT, LAMBDA"/>
-  <property name="allowSingleLineStatement" value="true"/>
-  <property name="severity" value="error"/>
-  <message key="needBraces"
-    value="''{0}'' statement must either use ''{}''s or only span one line." />
+    <property name="tokens"
+        value="LITERAL_DO, LITERAL_ELSE, LITERAL_FOR, LITERAL_IF, LITERAL_WHILE,
+            LITERAL_CASE, LITERAL_DEFAULT, LAMBDA" />
+    <property name="allowSingleLineStatement" value="true" />
+    <property name="severity" value="error" />
+    <message key="needBraces"
+        value="''{0}'' statement must either use ''{}''s or only span one line." />
 </module>
 ```
 
@@ -226,7 +226,7 @@ The `PackageName` module was kept using Google's [style](https://google.github.i
 The `AbbreviationAsWordInName` module was changed to disable ignoring `static` names:
 
 ```xml
-<property name="ignoreStatic" value="false"/>
+<property name="ignoreStatic" value="false" />
 ```
 
 It was set to the severity level `error`.
@@ -283,8 +283,8 @@ The following modules were categorized "Javadocs":
 The `MissingJavadocMethod` module was modified to exclude the `main` method from requiring Javadocs. It was also set to the `error` severity level.
 
 ```xml
-<property name="ignoreMethodNamesRegex" value="^main$"/>
-<property name="severity" value="error"/>
+<property name="ignoreMethodNamesRegex" value="^main$" />
+<property name="severity" value="error" />
 ```
 
 The `JavadocMethod`, `MissingJavadocType`, and `NonEmptyAtclauseDescription` modules now have security level `error`.
@@ -299,11 +299,11 @@ The following modules were categorized "Modifiers":
 
 ## Miscellaneous
 
-The following modules were categorized "Miscellaneous". Those marked with * were changed to security level `warning`.
+The following modules were categorized "Miscellaneous". Those marked with \* were changed to security level `warning`.
 
-- `UpperEll`*
-- `ArrayTypeStyle`*
-- `CommentsIndentation`*
+- `UpperEll`\*
+- `ArrayTypeStyle`\*
+- `CommentsIndentation`\*
 - `SuppressionXpathFilter`
 - `SuppressWarningsHolder`
 - `SuppressionCommentFilter`
