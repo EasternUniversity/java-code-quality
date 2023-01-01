@@ -272,15 +272,21 @@ The following modules were categorized "Javadocs":
 - `JavadocTagContinuationIndentation`
 - `SummaryJavadoc`
 - `JavadocParagraph`
-- `RequireEmptyLineBeforeBlockTagGroup`
-- `AtclauseOrder`
-- `JavadocMethod`
-- `MissingJavadocMethod`
-- `MissingJavadocType`
-- `SingleLineJavadoc`
-- `NonEmptyAtclauseDescription`
+- `RequireEmptyLineBeforeBlockTagGroup`\*\*
+- `AtclauseOrder`\*\*
+- `JavadocMethod`\*
+- `MissingJavadocMethod`\*
+- `MissingJavadocType`\*
+- `SingleLineJavadoc`\*\*
+- `NonEmptyAtclauseDescription`\*
 
-The `MissingJavadocMethod` module was modified to exclude the `main` method from requiring Javadocs. It was also set to the `error` severity level.
+\* Changed to security level `error`.
+
+\*\* Changed to security level `warning`.
+
+The `MissingJavadocMethod` module was modified to exclude the `main` method from requiring Javadocs.
+
+The `InvalidJavadocPosition` module was given a better message.
 
 ```xml
 <property name="ignoreMethodNamesRegex" value="^main$" />
@@ -299,8 +305,10 @@ The following modules were categorized "Modifiers":
 
 ## Miscellaneous
 
-The following modules were categorized "Miscellaneous". Those marked with \* were changed to security level `warning`.
+The following modules were categorized "Miscellaneous".
 
+- `OuterTypeFilename`\*\*
+- `OuterTypeNumber`\*\*
 - `UpperEll`\*
 - `ArrayTypeStyle`\*
 - `CommentsIndentation`\*
@@ -308,3 +316,9 @@ The following modules were categorized "Miscellaneous". Those marked with \* wer
 - `SuppressWarningsHolder`
 - `SuppressionCommentFilter`
 - `SuppressWithNearbyCommentFilter`
+
+\* Changed to security level `error`.
+
+\*\* Changed to security level `warning`.
+
+`OuterTypeFilename` and `OuterTypeNumber` were also given new, user-friendly messages.

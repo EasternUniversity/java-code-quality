@@ -52,7 +52,6 @@ Modified by: Simon Kwilinski
     </module>
 
     <module name="TreeWalker">
-        <module name="OuterTypeFilename" />
         <module name="IllegalTokenText">
             <property name="tokens" value="STRING_LITERAL, CHAR_LITERAL" />
             <property name="format"
@@ -466,7 +465,10 @@ Modified by: Simon Kwilinski
         ==============================
          -->
 
-        <module name="InvalidJavadocPosition" />
+        <module name="InvalidJavadocPosition">
+            <message key="invalid.position"
+                value="Javadoc comment is in the wrong location. Try moving it or changing it to a block comment." />
+        </module>
         <module name="JavadocTagContinuationIndentation" />
         <module name="SummaryJavadoc">
             <property name="forbiddenSummaryFragments"
@@ -534,6 +536,15 @@ Modified by: Simon Kwilinski
         ==============================
          -->
 
+        <module name="OuterTypeFilename">
+            <message key="type.file.mismatch"
+                value="The class name must be the same as the file name." />
+            <property name="severity" value="error" />
+        </module>
+        <module name="OuterTypeNumber">
+            <message key="maxOuterTypes" value="You should only have one main/outer class per file." />
+            <property name="severity" value="error" />
+        </module>
         <module name="UpperEll">
             <property name="severity" value="warning" />
         </module>
