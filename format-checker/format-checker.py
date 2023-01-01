@@ -51,6 +51,12 @@ def main():
         print("ERR: No .java files provided. Specify one or more " +
                 "files/directories on which to check formatting.")
         sys.exit(1)
+    
+    if not files:
+        print("ERR: No .java files provided.")
+        for f in sys.argv:
+            print(f"    '{f}' does not exist.")
+        sys.exit(1)
 
     total_levenshtein = 0
 
@@ -127,7 +133,7 @@ def resolvePaths(paths: List[str]) -> List[str]:
     files = []
 
     for p in paths:
-        if os.path.isfile(p):
+        if os.path.exists(p) and os.path.isfile(p):
             files.append(p)
         elif os.path.isdir(p):
             for f in getSubFiles(p):
