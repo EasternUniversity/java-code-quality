@@ -102,7 +102,7 @@ Remove the version number from the file name to allow the `lint` command to iden
 
 ### Checkstyle Google configuration
 
-The [google_checks.xml](data/google_checks.xml) file was originally [downloaded](https://github.com/checkstyle/checkstyle/blob/master/src/main/resources/google_checks.xml) from the Checkstyle GitHub repository, as linked from the [Google support page](https://checkstyle.org/google_style.html). At the time of download, it was last updated 2022-08-15.
+The [`google_checks.xml`](data/google_checks.xml) file was originally [downloaded](https://github.com/checkstyle/checkstyle/blob/master/src/main/resources/google_checks.xml) from the Checkstyle GitHub repository, as linked from the [Google support page](https://checkstyle.org/google_style.html). At the time of download, it was last updated 2022-08-15.
 
 However, this file has since underwent significant modification to reflect the style conventions used at Eastern University. Therefore, it is inappropriate to simply download an updated version and replace the current copy.
 
