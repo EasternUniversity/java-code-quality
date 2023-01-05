@@ -40,4 +40,5 @@ echo "Installing python Levenshtein..."
 
 pip3 install levenshtein
 
-echo "Successfully installed java-code-quality"
+version=$(cat data/version)
+echo "Successfully installed java-code-quality v$version"
