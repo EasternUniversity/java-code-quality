@@ -254,7 +254,8 @@ The following modules were categorized "Coding":
 - `MissingSwitchDefault`
 - `NoFinalizer`
 - `OverloadMethodsDeclarationOrder`
-- `VariableDeclarationUsageDistance`
+
+The module `VariableDeclarationUsageDistance` was removed, despite its intention to uphold rule [4.8.2.2](https://checkstyle.org/styleguides/google-java-style-20180523/javaguide.html#s4.8.2-variable-declarations) from Google's style guide. This is because it has too many false-positives and is generally unhelpful to students new to coding. In most cases, it can be suppressed by declaring a flagged variable `final`, but given that students learn about variables well before learning about the `final` keyword, this solution is unhelpful.
 
 The `OneStatementPerLine` and `MissingSwitchDefault` modules now have severity level `error`.
 
